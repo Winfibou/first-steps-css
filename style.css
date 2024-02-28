@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
+
+@font-face {
+    font-family: "DMSerif";
+    src: url(./assets/fonts/DMSerifDisplay-Regular.ttf);
+}
+
+
+
+/* L'étoile donne du style à TOUS les éléments, permet d'enlever,avec les valeurs 0, toutes les marges définies d'office par les navigateurs  */
+/* * {
+    margin: 0;
+    padding: 0;
+
+} */
+
+
+
+
+body{
+    font-family:"DMSerif", Verdana ;
+    /* on rajoute verdana au cas où DM ne marche pas. Les inputs et la textarea ne seront pas pointés */
+    background: url(./assets/img/Groot.png)no-repeat center/cover;
+    /* ou autre méthode   */
+    min-height: 100vh;
+    /* VH = viewport-height ,100% =toute la taille de l'écran */
+}
+
+
+/* h1 étant un enfant de body et donc plus specifique, il est prioritaire sur le style du body En gros,tant qu'un style n'est pas spécifié auprès d'un enfant, c'est le style du parent qui prédomine */
+
+h1 {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-align: center;
+/* les tailles de polices doivent être en REM 1REM=16px*/
+    font-size: 2.7rem;
+    /* ou  */
+    font-size: 8vw;
+    /* vw=viewport widht, la taille de H1 s'adapte à la taille de l'écran  */
+
+    /* on préconise 25% de shadow */
+    text-shadow: -4px 5px 7px #0000002b;
+    
+    /* (red green blue) */
+    color: rgb(140, 10, 29);
+    /* autre possibilité: color:#000000  */
+
+    /* voir 24.22 min ds CSS1 */
+    font-family: 'Oswald', sans-serif;
+    /* ff+entrée va proposer toutes les polices connues p */
+    }
+
+    main{
+        min-height: 500px;
+        width: 90%;
+        /* tjrs utiliser % pour le width, permet de s'adapter à tous supports */
+        background: rgba(186, 159, 159, 0.73);
+        /* le a est pour la transparence */
+
+        /* centrer une boîte. En premier, (0)top et bottom, en 2, (auto)left and right  */
+        margin: 0 auto;
+        border: 4px solid rgb(107, 25, 25);
+        border-radius:20px;
+        /* pour specifier, on peut dire 20 px 20 px 00 par ex, le CSS l'applique aux coins dans le sens des aiguilles d'une montre  */
+
+        box-shadow: 0 0 20px 8px #7f5b67;
+        padding: 15px;
+
+    }
+
+    /* }   enlève la marge mise d'office par le nav et du coup réiquilibre l ensemble  */
+      h2 { margin: 0;
+         }
+
+         
+         .flexbox , .grid , .absolute {
+
+            border: 2px solid #984963;
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 20px;
+            min-height: 150px;
+
+         }
+         /* tous les éléments où tu vois "class flexbox", tu lui donnes le style suivant */
+         /* FLEXBOX sert à repartir équitablement des éléments sur la page  */
+
+         /* Partie Flexbox */
+         .flexbox ul {
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            /* permet de répartir équitablement quelque soit la taille de l'écran */
+         }
+
+         
+         .flexbox li {
+            list-style: none;
+            /* enlève la boule */
+            height: 160px;
+            width: 160px;
+            margin: 10px;
+            background: rgb(205 136 136);;
+
+            /* Centrer un unique élément verti. et horiz */
+            display: flex;
+            justify-content:center;
+            align-items: center;
+        }
+
+         
+        
+        
+        /* GRID */
+         .grid-container{
+            /* taper gc */
+            display: grid;
+            grid-template-columns: 30% 70%;
+            /* (gtc) On réparti en fonction du nombres d'enfants .Si 3, 3 fois %. */
+
+         }
+
+         .grid img{
+           width: 80%;
+           /* le width % permet de s'adapter à tous les écrans  */
+           margin: 20px auto;
+           display: block;
+         }
+
+         form {
+            display: grid;
+            /* mets les éléments à la ligne  */
+            grid-template-columns:1fr 1fr ;
+            /* 2 colonnes à 1 fraction*/
+            grid-template-rows: 1fr 1fr 1fr;
+            grid-template-areas:
+            "i1 i2"
+            /* infant1, infant2  */
+            "ta ta"
+            /* textarea */
+            "vi bt";
+        }
+          
+        input, 
+        textarea {
+            margin: 5px;
+            border: 2px solid rgb(54, 16, 90);
+            padding: 10px;
+            font-size: 1.1rem;
+            font-family: "DMSerif";
+            border-radius: 5px;
+            
+        }
+            
+
+
+            textarea {
+                grid-area: ta;
+                height: 40px;
+                resize: none;}
+
+
+            
+        #btn-submit{
+                  grid-area: bt;
+                  cursor: pointer;
+                  background: rgb(205 136 136);
+                  transition: 0,3s;
+                  /* (plus élégant) */
+                  
+              }
+
+        #btn-submit:hover{
+            background:rgba(243, 39, 8, 0.473);
+            color: antiquewhite;
+            
+            /* hover = quand on survole la case change de couleur */
+              }    
+              
+              
+        /* Absolute */
+        /* il faut mettre une position relative au parent pour contraindre l'élément en absolute(enfant) dans les frontières du parent  */
+        .absolute {
+            position: relative;
+        }
+
+        #circle1 {
+            height: 80px;
+            width: 80px;
+            background: rgb(135, 61, 61) ;
+            position: absolute;
+            border-radius: 150px;
+            top: 0;
+            /* collé au top */
+            right: 0;
+            /* collé à droite */
+            /* top ou right: -20px;, on le déplace hors bordures */
+            
+            /* la position "absolute" permet de bouger l'élément à sa guise, partout sur la page* Il sera en absolute par rapport au Body/
+            /* Si on le met en position relative, l'élément enfant en absolute est contenu ds les frontières de son parent -> .absolute{ position: relative;}*/
+        }
+           
+        
+        #circle2{
+            height: 40px;
+            width: 40px;
+            border-radius: 150px;
+            background: rgb(135, 61, 61) ;
+            position: absolute;
+            left: 50%;
+            /* le cercle est centré par rapport à sa bordure gauche, il faut donc utiliser transformX ( x pour horiz, y pour vertic */
+            transform: translateX(-50%);
+            top: 70px;
+        }
+
+        /* RESPONSIVE */
+        /* Permet de dire ce qui se passe avec les éléments lorsque la taille de l'écran sur lequel est lu le contenu "casse" la structure */
+
+        @media screen and (max-width:900px){
+            /* En dessous de 900, mettre en bloc */
+            .grid-container {
+                display:block
+                /* on lui dit d'arr^ter le display grid en dessous de 900 et de se mettre en bloc */
+            }
+            .grid-container img {
+                width: 40%;
+                /* on cantonne l'image à 40 % si on passe en dessous de 900px */
+
+            }
+
+        } 
+
+        @media screen and (max-width: 610px){
+            .flexbox ul{
+                flex-direction: column;
+                align-items: center;
+            }
+            form {
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr;
+                grid-template-areas: 
+                "i1"
+                "i2"
+                "ta"
+                "bt";
+            }
+            input, textarea{
+                font-size: 0.9rem;
+            }
+            
+        }
+
+        /* Pour bien insister, dès qu'on passe au dessus de 610px, le bloc de commande ne s'applique plus */
+
+        
+            
+        
+        
+
+
+
+    
+        
+            
+        
+
+            
