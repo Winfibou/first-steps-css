@@ -1,1 +1,1 @@
-Premiers pas CSS / First steps CSS, differences between flex, grid , absolute..
+Premiers pas CSS / First steps CSS, differences between flex, grid .
